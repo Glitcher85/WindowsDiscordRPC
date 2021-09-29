@@ -51,7 +51,7 @@ namespace WindowsDiscordRPC {
                     }
                 }
             }
-            return (WindowsVersion.Length > 1) ? Int32.Parse(WindowsVersion.ToString()) : Int32.Parse(WindowsVersion[0].ToString());
+            return (WindowsVersion.Length > 1) ? Int32.Parse(new string(WindowsVersion)) : Int32.Parse(WindowsVersion[0].ToString());
         }
 
         public static string GetCurrentWindowTitle() {
