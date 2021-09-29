@@ -1,4 +1,5 @@
 <img src="WindowsDiscordRPC/images/icon.png" alt="[logo]" width="48"/> Windows Discord RPC
+=======================
 
 ## Features
 
