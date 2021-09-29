@@ -2,7 +2,7 @@
 =======================
 
 [![OS](https://img.shields.io/badge/OS-Windows-blue?style=flat&logo=windows)](https://www.microsoft.com/en-us/software-download/)
-[![architecture](https://img.shields.io/badge/architecture-32%2F64--bit-green?style=flat&logo=none)]
+[![architecture](https://img.shields.io/badge/architecture-32%2F64--bit-green?style=flat&logo=intel)]
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 ## Features
