@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using DiscordRPC;
 using System.Threading;
 using System.Windows.Forms;
@@ -9,16 +10,32 @@ namespace WindowsDiscordRPC {
         public int Now = 0;
         public bool started = false;
         public DiscordRpcClient client = null;
+        public Dictionary<int, string> ClientID;
         public int WindowsVersion = RPCDetails.GetCurrentOS();
-        public Dictionary<int, string> ClientID = new Dictionary<int, string> {
-            { 7, "883030956573855744" },
-            { 8, "888027859707396096" },
-            { 10, "888028337413431316" },
-            { 11, "888028546629509181" }
-        };
+
+        public Dictionary<int, string> GetConfig() {
+            if (File.Exists(Directory.GetCurrentDirectory()+@"\data.config")) {
+                string[] lines = File.ReadAllLines(Directory.GetCurrentDirectory()+@"\data.config");
+                if (lines.Length == 4) {
+                    return new Dictionary<int, string> {
+                        { 7, lines[0] },
+                        { 8, lines[1] },
+                        { 10, lines[2] },
+                        { 11, lines[3] }
+                    };
+                } else {
+                    MessageBox.Show("The file 'data.config' is corrupted.\nPlease reinstall the project.", "An Exception has occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            } else {
+                MessageBox.Show("Couldn't find the file 'data.config'.\nPlease reinstall the project.", "An Exception has occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
 
         public DiscordRPCForm() {
             InitializeComponent();
+            ClientID = GetConfig();
         }
 
         private void DiscordRPCForm_Load(object sender, EventArgs e) {
